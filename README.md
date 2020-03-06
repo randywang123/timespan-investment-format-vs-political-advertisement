@@ -12,7 +12,12 @@
 
 ## Data Preprocessing 
 
-- I deleted anything that is not related to our project and also found out that there are many errors in the data, like the end time is before the start time. This issue made me think about the accuracy of the data because the company with high reputation should not release fake data for any purposes. I changed all the time format from ISO 8601 format to excel format and do some manipulation from there.(IF-ELSE statement to padding the NULL value) Also for the price of the add, I converted it to the current amount of US Dollar based on the currency exchange rate provided by Google. (Use VLOOKUP to check the specific rate). For the format of the application, I parsed the link and get the last three characters to be the format of the advertisement like "mp4". Then, I used IF-ELSE statement to decide which one is video(1) and which one is picture(0). 
+- I deleted anything that is not related to our project and also found out that there are many errors in the data, like the end time is before the start time. This issue made me think about the accuracy of the data because the company with high reputation should not release fake data for any purposes. 
+- I changed all the time format from ISO 8601 format to excel format and do some manipulation from there.(IF-ELSE statement to padding the NULL value) 
+- Also for the price of the add, I converted it to the current amount of US Dollar based on the currency exchange rate provided by Google. (Use VLOOKUP to check the specific rate). 
+- For the format of the application, I parsed the link and get the last three characters to be the format of the advertisement like "mp4". Then, I used IF-ELSE statement to decide which one is video(1) and which one is picture(0). The image below can show how I parse the formate information. 
+
+- ![](./image/format.png)
 
 ## Data Analysis
 - As I mentioned before, R square is around 0.7 which means my model could describe 0.7 of the total number. 
@@ -22,11 +27,13 @@
 - This figure indicate that the value of investment is very significant in predicting the result since it has a p-value at 0. However, other two factors would be less significant. 
 
 # File Specification 
-- `Currency` sheet is the currency exchange rate I collected from Google
-- `PoliticalAds` sheet contains the single variable regression and all the data including raw data required for this project
-- `Distribution` sheet is a sheet to show what the proportion of ads is in the format of video
-- `Multi-regression` sheet does the multi-value regression for the project
-- `Correlation` sheet includes all the correlation between each pair of variables
+- `PoliticalAds.csv` is the original data I get from the website
+- `2019.xlsx` is the result excel table with all the work I did for the project
+    - `Currency` sheet is the currency exchange rate I collected from Google
+    - `PoliticalAds` sheet contains the single variable regression and all the data including raw data required for this project
+    - `Distribution` sheet is a sheet to show what the proportion of ads is in the format of video
+    - `Multi-regression` sheet does the multi-value regression for the project
+    - `Correlation` sheet includes all the correlation between each pair of variables
 
 
 # Data Visualization 
@@ -48,4 +55,4 @@
 
 - Overall, this regression method can provide a decent accuracy to the complicated question. But the investment is still the key factor in deciding how much impressions a political advertisement can get. In order to change this situation, we need to add more features to balance out the strong influence of a very significant factor. 
 
-- One thing that is important is the accuracy of the data. I found many errors like the formatting and time error. So I guess in the future, getting a more reliable data would also be helpful to the development of the project. Data is essential for any kind of prediction.  
+- One thing that is important is the accuracy of the data. I found many errors like the formatting. For example, for some candidate the end time is before the start time, which doesn't make sense at all. I deleted those rows in order to get a better result. But it is not always a wise choice to choose to delete them because some rows would have effects on the final result if the data is correct. This is also very dangerous in real life, so I used a copy of the data to do all my work. In the future, getting a more reliable data would also be helpful to the development of the project. Data is essential for any kind of prediction.  
